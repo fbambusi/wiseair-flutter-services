@@ -1,13 +1,14 @@
 name: wiseair_flutter_services
-description: A new Flutter package project.
-version: 0.0.1
-homepage:
+description: An API to access Wiseair's air quality data, with an expressive and concise syntax.
+version: 0.0.2
+homepage: https://github.com/fbambusi/wiseair-flutter-services
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: ">=2.10.0 <3.0.0"
   flutter: ">=1.17.0 <2.0.0"
 
 dependencies:
+  injector: ">=1.0.0 <= 1.0.9"
   flutter:
     sdk: flutter
 

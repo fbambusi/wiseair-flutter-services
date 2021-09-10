@@ -1,4 +1,1 @@
-class NotLoggedInException implements Exception{
-
-
-}
+class NotLoggedInException implements Exception {}

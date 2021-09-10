@@ -26,27 +26,28 @@ dependencies:
 ### Login
 ```dart
 import 'package:wiseair_flutter_services/wiseair_flutter_services.dart';
-final WiseairServices wiseairServices = WiseairServices();
+final WiseairServices ws = WiseairServices.instance;
 
 WiseairCredentials credentials=UserCredentials(email:"example@wiseair.vision",password:"secret");
 
-User me = await wiseairServices.instance.login(credentials:credentials);
+User me = await ws.login(credentials:credentials);
 ```
 
 ### Get air quality data from user sensors
 ```dart
 import 'package:wiseair_flutter_services/wiseair_flutter_services.dart';
-final WiseairServices wiseairServices = WiseairServices();
+
+final WiseairServices ws = WiseairServices.instance;
 
 WiseairCredentials credentials=UserCredentials(email:"example@wiseair.vision",password:"secret");
 
-User me = await wiseairServices.instance.login(credentials:credentials);
-List<Sensor> mySensors = await wiseairServices.instance.getMySensors();
+User me = await ws.login(credentials:credentials);
+List<Sensor> mySensors = await ws.getMySensors();
 
-Interval interval=Interval(dateStart=Datetime(2021,10,10,12),dateEnd=Datetime(2021,10,10,15));
+Interval interval=ws.lastHours(60);
 
 for(Sensor sensor in mySensors){
-    List<Prediction> predictions=await WiseairServices.instance.getSensorDailyPredictions(sensor:sensor,interval:interval);
+    List<Prediction> predictions=await ws.getSensorDailyPredictions(sensor:sensor,interval:interval);
 }
 ```
 
@@ -54,15 +55,15 @@ for(Sensor sensor in mySensors){
 
 ```dart
 import 'package:wiseair_flutter_services/wiseair_flutter_services.dart';
-final WiseairServices wiseairServices = WiseairServices();
+final WiseairServices ws = WiseairServices.instance;
 
 WiseairCredentials credentials=UserCredentials(email:"example@wiseair.vision",password:"secret");
-await wiseairServices.instance.login(credentials:credentials);
+await ws.login(credentials:credentials);
 
 Location location=Location(latitude:45.070,longitude:7.686);
-Interval interval=Interval(dateStart=Datetime(2021,10,10,12),dateEnd=Datetime(2021,10,10,15));
+Interval interval=ws.lastHours(60);
 
-List<Prediction> predictions=await WiseairServices.instance.getLocationPredictions(location:location,interval:interval);
+List<Prediction> predictions=await ws.getLocationPredictions(location:location,interval:interval);
 ```
 
 ## What's next?
